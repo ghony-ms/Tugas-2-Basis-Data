@@ -35,15 +35,17 @@ CREATE TABLE pasien (
 ) ENGINE=InnoDB;
 ```
 
-3. Membuat tabel penghubung: dokter_admin
+3. Membuat tabel penghubung: pasien_dokter
 ```sql
-CREATE TABLE dokter_admin (
-  id_data   INT AUTO_INCREMENT PRIMARY KEY,
-  id_dokter VARCHAR(10),
-  id_admin  VARCHAR(10),
+CREATE TABLE pasien_dokter (
+  id            INT AUTO_INCREMENT PRIMARY KEY,
+  id_dokter     VARCHAR(10),
+  id_pasien     VARCHAR(10),
+  waktu_periksa DATETIME,
+  resep         TEXT,
   FOREIGN KEY (id_dokter) REFERENCES dokter(id_dokter)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (id_admin)  REFERENCES administrator(id_admin)
+  FOREIGN KEY (id_pasien) REFERENCES pasien(id_pasien)
     ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 ```
@@ -61,19 +63,15 @@ CREATE TABLE daftar (
 ) ENGINE=InnoDB;
 ```
 
-5. Membuat tabel penghubung: pasien_dokter
+5. Membuat tabel penghubung: dokter_admin
 ```sql
-CREATE TABLE pasien_dokter (
-  id            INT AUTO_INCREMENT PRIMARY KEY,
-  id_dokter     VARCHAR(10),
-  id_pasien     VARCHAR(10),
-  waktu_periksa DATETIME,
-  resep         TEXT,
+CREATE TABLE dokter_admin (
+  id_data   INT AUTO_INCREMENT PRIMARY KEY,
+  id_dokter VARCHAR(10),
+  id_admin  VARCHAR(10),
   FOREIGN KEY (id_dokter) REFERENCES dokter(id_dokter)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (id_pasien) REFERENCES pasien(id_pasien)
+  FOREIGN KEY (id_admin)  REFERENCES administrator(id_admin)
     ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 ```
-
-6. 
