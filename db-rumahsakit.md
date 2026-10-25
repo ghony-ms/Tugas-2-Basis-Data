@@ -76,3 +76,8 @@ CREATE TABLE dokter_admin (
     ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 ```
+
+6. Menampilkan tabel yang sudah di buat
+```sql
+SHOW TABLES;
+```
